@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фагира — Салон красоты в Астане</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --surface: #ffffff;
+      --text: #1c1a17;
+      --muted: #6e685f;
+      --accent: #b88655;
+      --accent-dark: #9a6d40;
+      --border: #e8e2d9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+    
+    /* Шапка */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(250, 248, 245, 0.9);
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .rating-badge {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;
+    }
+    .rating-badge span { color: #e59819; }
+
+    /* Первый экран */
+    .hero { padding: 64px 0 48px; text-align: center; }
+    .hero-tag {
+      display: inline-block; font-size: 13px; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--accent-dark); font-weight: 600; margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 56px); line-height: 1.1; margin-bottom: 18px;
+    }
+    .hero p { color: var(--muted); max-width: 560px; margin: 0 auto 30px; font-size: 16px; }
+    .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px;
+      text-decoration: none; cursor: pointer; border: none; transition: 0.2s;
+    }
+    .btn-primary { background: var(--text); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dark); }
+    .btn-outline { background: transparent; border: 1px solid var(--text); color: var(--text); }
+    .btn-outline:hover { background: var(--text); color: #fff; }
+
+    /* Преимущества */
+    .info-bar {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; margin: 20px 0 56px;
+    }
+    .info-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 20px; border-radius: 12px;
+    }
+    .info-card small { color: var(--muted); display: block; margin-bottom: 4px; }
+    .info-card strong { font-size: 15px; }
+
+    /* Услуги */
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; margin-bottom: 24px; text-align: center;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px; margin-bottom: 64px;
+    }
+    .service-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 24px; border-radius: 14px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .service-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .service-desc { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+    .service-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 14px; border-top: 1px solid var(--border);
+    }
+    .price { font-weight: 600; font-size: 16px; color: var(--accent-dark); }
+    .book-mini {
+      background: var(--bg); border: 1px solid var(--border); padding: 8px 14px;
+      border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .book-mini:hover { background: var(--text); color: #fff; }
+
+    /* Форма записи */
+    .booking-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px 24px; max-width: 560px; margin: 0 auto 64px;
+    }
+    .booking-box p { text-align: center; color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    input, select {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--border);
+      border-radius: 8px; font-family: inherit; font-size: 15px; background: var(--bg);
+    }
+    .btn-wa {
+      width: 100%; background: #25D366; color: #fff; font-size: 16px;
+      padding: 15px; margin-top: 8px;
+    }
+    .btn-wa:hover { background: #1ebe5d; }
+
+    /* Подвал */
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 0;
+      text-align: center; font-size: 14px; color: var(--muted);
+    }
+    .demo-note {
+      margin-top: 14px; display: inline-block; background: #efe9df;
+      color: var(--text); padding: 6px 14px; border-radius: 6px; font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">Фагира</div>
+    <div class="rating-badge"><span>★ 4.8</span> в 2ГИС (41 оценка)</div>
+  </div>
+</header>
+
+<section class="hero container">
+  <div class="hero-tag">Салон красоты • Астана</div>
+  <h1>Стильные стрижки, окрашивание и уход за волосами</h1>
+  <p>Подберём образ под ваш стиль и структуру волос. Работаем ежедневно на проспекте Абылай хана, 3/1.</p>
+  <div class="btn-group">
+    <a href="#booking" class="btn btn-primary">Записаться онлайн</a>
+    <a href="tel:+77015013808" class="btn btn-outline">+7 (701) 501-38-08</a>
+  </div>
+</section>
+
+<section class="container">
+  <div class="info-bar">
+    <div class="info-card">
+      <small>Адрес в Астане</small>
+      <strong>пр. Абылай хана, 3/1 (1 этаж)</strong>
+    </div>
+    <div class="info-card">
+      <small>Режим работы</small>
+      <strong>Ежедневно 10:00 – 20:00</strong>
+    </div>
+    <div class="info-card">
+      <small>Остановка рядом</small>
+      <strong>пр. Абылай Хана (2 мин пешком)</strong>
+    </div>
+  </div>
+
+  <h2>Услуги и стоимость</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div>
+        <div class="service-title">Женская стрижка</div>
+        <div class="service-desc">Мытьё головы, подбор формы по типу лица, стрижка и лёгкая укладка.</div>
+      </div>
+      <div class="service-bottom">
+        <span class="price">от 4 500 ₸</span>
+        <button class="book-mini" onclick="selectService('Женская стрижка')">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div>
+        <div class="service-title">Мужская стрижка</div>
+        <div class="service-desc">Классические и современные мужские стрижки, оформление контура и укладка.</div>
+      </div>
+      <div class="service-bottom">
+        <span class="price">от 4 500 ₸</span>
+        <button class="book-mini" onclick="selectService('Мужская стрижка')">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div>
+        <div class="service-title">Сложное окрашивание</div>
+        <div class="service-desc">Осветление, тонирование и яркие цветные оттенки с защитой качества волос.</div>
+      </div>
+      <div class="service-bottom">
+        <span class="price">по консультации</span>
+        <button class="book-mini" onclick="selectService('Сложное окрашивание')">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div>
+        <div class="service-title">Кератиновое выпрямление</div>
+        <div class="service-desc">Глубокое восстановление, гладкость и зеркальный блеск до нескольких месяцев.</div>
+      </div>
+      <div class="service-bottom">
+        <span class="price">по длине волос</span>
+        <button class="book-mini" onclick="selectService('Кератиновое выпрямление')">Выбрать</button>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div>
+        <div class="service-title">Детская стрижка</div>
+        <div class="service-desc">Аккуратная и быстрая стрижка в спокойной атмосфере для детей любого возраста.</div>
+      </div>
+      <div class="service-bottom">
+        <span class="price">уточнить цену</span>
+        <button class="book-mini" onclick="selectService('Детская стрижка')">Выбрать</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="booking-box" id="booking">
+    <h2>Быстрая запись</h2>
+    <p>Выберите услугу и удобное время — заявка сразу откроется в WhatsApp салона</p>
+    <form onsubmit="sendToWhatsApp(event)">
+      <div class="form-group">
+        <label>Ваше имя</label>
+        <input type="text" id="clientName" placeholder="Например, Алина" required>
+      </div>
+      <div class="form-group">
+        <label>Услуга</label>
+        <select id="serviceSelect">
+          <option value="Женская стрижка">Женская стрижка (от 4 500 ₸)</option>
+          <option value="Мужская стрижка">Мужская стрижка (от 4 500 ₸)</option>
+          <option value="Сложное окрашивание">Сложное окрашивание</option>
+          <option value="Кератиновое выпрямление">Кератиновое выпрямление</option>
+          <option value="Детская стрижка">Детская стрижка</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Желаемый день и время</label>
+        <input type="text" id="visitTime" placeholder="Например, завтра в 15:00" required>
+      </div>
+      <button type="submit" class="btn btn-wa">Записаться через WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>Салон красоты «Фагира» • Астана, проспект Абылай хана, 3/1 • Ежедневно 10:00–20:00</div>
+    <div class="demo-note">Демо-версия сайта подготовлена специально для салона «Фагира»</div>
+  </div>
+</footer>
+
+<script>
+  function selectService(serviceName) {
+    document.getElementById('serviceSelect').value = serviceName;
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function sendToWhatsApp(e) {
+    e.preventDefault();
+    const name = document.getElementById('clientName').value;
+    const service = document.getElementById('serviceSelect').value;
+    const time = document.getElementById('visitTime').value;
+    const text = `Здравствуйте! Хочу записаться в салон «Фагира».\nИмя: ${name}\nУслуга: ${service}\nУдобное время: ${time}`;
+    window.open(`https://wa.me/77015013808?text=${encodeURIComponent(text)}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
